@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <title>The Transit Hüb</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">   
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/sandstone/bootstrap.min.css" integrity="sha384-zEpdAL7W11eTKeoBJK1g79kgl9qjP7g84KfK3AZsuonx38n8ad+f5ZgXtoSDxPOh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+
+<!-- Navbar -->
+<body style = "background-color: #e9ecef">
+    <div style="background-image: url('https://github.com/spearjen/TransitData/blob/spearjay/graphics/pubTransitimage.jpg?raw=true');"></div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">The Transit Hüb</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="naturalLanguage">Public Sentiment</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="timeSeriesFunding">Federal Funding: Time Series</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="fundingBySource">Funding Sources by City & Agency</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="transitAccesibility">Availability</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">References & Resources</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="resources">Resources of Interest</a>
+                        <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="methods">Methods & Findings</a>
+                            <a class="dropdown-item" href="dataSources">Data Sources</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+<!-- Container -->
+    <div class = "container">
+        <div class="jumbotron">
+            <h1 class="display-3">Methods & Findings</h1>
+            <p class="lead"></p>
+            <hr class="my-4">
+            <p style="font-size:x-large; font-weight:600">Overall Processes</p>
+                <p>Given that The Transit Hüb is meant to provide a comprehensive picture of the state of public transportation in the United States, we took a map-based approach to visualizing our data. 
+
+                    In the extraction and cleaning process, we used Pandas and Matplotlib to perform cleaning and exploratory data analysis, all of which can be seen in our Jupyter Notebooks, especially for the Natural Language Processing portion of this project.<br><br>                    
+                    For visualizing location-based data we used Tableau, primarily for its ease of use, aesthetically pleasing, and user-friendly maps. Given the volume of our data, we decided to represent funding, transit accessibility, and sentiment analysis data on separate maps in order to maintain an ease of interpretability and to separate maps thematically in our final product, on different pages of our final website. <br><br>
+                    For analysis of twitter data (sentiment analysis), we used the Natural Language Toolkit (NLTK) to perform sentiment analysis on 200 tweets from 35 states (which was all available data from Twitter’s API with these specifications), and on 100 tweets at the national level (which was all available data from Twitter’s API with those specifications). <br><br>
+                    In constructing the linear regression model, we used scikit-learn as well as some feature engineering to construct the two lag columns (previous year’s ridership and ridership from two years ago) to use as features in addition to urban transit funding to predict ridership levels. Initially, we used a linear regression model to discern whether polarity and subjectivity data from the Natural Language Processing portion could predict income from fares in a given state, however that model lacked enough features based on our available data to construct a model of any utility.<br><br>
+                    Our final product is hosted on Heroku and uses a combination of HTML, CSS, Javascript, JQuery, D3, and Bootstrap to organize and present our analysis in a user-friendly way.<br>
+                    </p>
+                    <br>
+            <p style="font-size:x-large; font-weight:600">Public Sentiment & Polarity vs. Subjectivity of State-Level Public Transit Related Tweets</p>
+                <p>Using Twitter's API, the Tweepy module, and the Natural Language ToolKit, we scraped all available tweets regarding public transit and mentioning each specific state (if available, 35/50 states had available tweets about public transit at the time of analysis). We performed sentiment analysis on these tweets and extracted a subjectivity and polarity score for each state’s tweets about public transit.<br><br> 
+                    A subjectivity score closer to 1 (on a decimal scale from 0 to 1) means a given state tweeted more opinion-based content regarding their local transit, and a score closer to 0 means a state tweeted more fact-based content regarding their local transit.<br><br>
+                    A polarity score closer to +1 (on a decimal scale from -1 to +1) means a state tweeted more positive content regarding their local transit, whereas scores closer to 0 meant more neutral content, and scores closer to -1 meant more negative content. <br><br>
+                    The dots on the map are sized according to polarity—larger circles mean a state is tweeting more positively about their local transit, and vice versa. <br><br>
+                    Notable in this map are the small sizes of the New York and Massachusetts dots, indicating the somewhat negative polarity of their tweets overall. This could be an indicator of dissatisfaction with local transit, but whether it is a referendum on users not liking the transit system overall or taking issue with imperfections in the system is a topic for further study.</p>
+                <br>
+
+            <p style="font-size:x-large; font-weight:600">Public Sentiment & Polarity vs. Subjectivity of Recent Tweets from the US Overall about Public Transit</p>
+                <p>Similar to the polarity and subjectivity data at a state level, we also scraped all available tweets regarding public transit that were geotagged in the United States overall rather than just at the state level. We performed sentiment analysis using Natural Language ToolKit on these national-level tweets and found that at this large scale, tweets about public transit are generally pretty neutral, with a polarity value of 0.0726. Tweets about public transit were somewhat subjective with an overall subjectivity score of 0.3659. <br><br>
+                    These national-level results make sense in the context of the medium, Twitter is generally a place for users to post opinionated content. Any positivity or negativity about public transit seems to disappear at the national scale, suggesting that people have stronger positive or negative feelings about their local transit than public transit as a whole.</p>
+                <br>
+
+            <p style="font-size:x-large; font-weight:600">Time Series: Funding & Scikit-Learn Machine Learning Linear Regression</p>
+                <p>Using data from the Federal Transit Administration, we performed a linear regression as a supervised machine learning algorithm to understand how well funding and previous year’s ridership predicts the current year’s ridership. We collected the FTA data which provided urban transit funding from 1998-2019, and total ridership in the same time band. We then engineered two features, which was two lag columns that calculated the previous year’s ridership and the previous two year’s ridership.
+                <br>
+                <p>Federal funding data was obtained by pulling flat files from the FTA website(see Resources page). The main funding data was presented in an Excel based workbook that had each year’s funding on a separate sheet. Tableau Prep was used to clean and pivot this funding data into a usable form that allowed for analysis and graphing. Tableau’s intuitive visual based application allowed for an easy experience of transforming the data. Once the data was cleaned and pivoted into the workable form needed, Tableau Prep allows the user to export a new file that can be uploaded into Tableau Desktop for graphing and analysis.<br><br>
+                    Tableau Desktop allowed us to experiment with multiple visualization methods in order to represent our data in the most informative way. Building simple and telling graphics was our primary goal when trying to convey the story that our federal funding tells. <br><br>
+                    Our findings show that federal funding has been consistent over the last decade with an average of $10.88 billion funded annually. While there was a steady increase in funding from 2010 to 2018, we see a dramatic reduction in federal dollars over the last 2 years. While the mighty dollar doesn’t tell the complete story, budgets are a barometer of an organization’s focus. Public ridership has remained steady over the last decade, though it has been trending down over the last few. Bus ridership has been in decline since 2012, while rail ridership has been declining since 2016. Without an increase of ridership and vocal advocacy it will be hard to push for an increase in funding to allow for public transport to become more ubiquitous and available to the citizens of this country.<br><br></p>
+                
+            <p style="font-size:x-large; font-weight:600">Funding Sources by City & Agency</p>
+                <p>Using the 2019 Funding Sources dataset from the USDOT / Federal Transit Administration's National Transit Database, we grouped data by cities and overlaid the results onto a Tableau map. Circle sizes represent the relative size of operational budgets for each city's public transporation initiatives. Circle sizes are scaled to be equivalent on all maps, so that the size of a circle in Hawaii, Puerto Rico, or Alaska is equivalent to the size of a circle in the contiguous 48 states. Where more than one organization or organization type operates in the chosen city, the map's pop-up information boxes display an * to indicate more than one result. <br><br>
+                    Clicking on a city filters the block graph at the bottom of the visualization, allowing the user to explore the funding sources for that city by proportion. Hovering over any division in the block graph displays the organization name, organization type, and the dollar amount of funding. This fills in the information missing when hovering over a city and receiving an * for multiple organizations or organization types.<br><br>
+                    The information provided on this map and graph may be used by cities or organizations looking to establish public transportation or enhance funding by answering the question, "How are organizations or cities like mine funding public transit?</p>
+                <br>
+            
+            <p style="font-size:x-large; font-weight:600">Transit Availability</p>
+                <p>For a comparison between population density and the relative accessibility of public transit, we limited the scope of what we define public transportation to be. We decided to limit the data to bus stops and rail stations. Thanks to the General Transit Feed Specification dataset of the National Transit Map, we were able to find datasets for the locations of rail stations and bus stops across the nation. The biggest problem we ran into was the incompleteness of the bus stop dataset. Out of the 29 columns of potential data, only about half a dozen had data. The only complete columns were the stop_id, stop_name, longitude, latitude, and the object ID. Even then, the data type of each column was not consistent. That’s why you see every column being VARCHAR. Another challenge was that there was no common data between the rail station and bus stop datasets, so using a JOIN of any kind was pretty much out of the question. That meant the only option for combining the two datasets for use in Tableau was to use a UNION ALL, which basically just stacks the two datasets on each other - but with a catch - it essentially deletes duplicated data. This proved to be especially meddlesome when trying to filter the data by State. Did you know there’s a Union Station in Burlington, Vermont? According to the combined dataset, it’s now Union Station in in Colorado by coordinates, but it still shows VT as the state. Trials and tribulations aside, after combining the data I imported the UNION’d datasets into Tableau to create the map. Thanks to Tableau’s robust mapping capabilities, overlaying my dataset on the map of the United States was a breeze, and adding a population density layer wasn’t more than a light gust. 
+                </p>
+                <br>
+                
+            </div>
+    </div>
+</body>

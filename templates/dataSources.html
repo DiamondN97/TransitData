@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <title>The Transit Hüb</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">   
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/sandstone/bootstrap.min.css" integrity="sha384-zEpdAL7W11eTKeoBJK1g79kgl9qjP7g84KfK3AZsuonx38n8ad+f5ZgXtoSDxPOh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+
+<!-- Navbar -->
+<body style = "background-color: #e9ecef">
+    <div style="background-image: url('https://github.com/spearjen/TransitData/blob/spearjay/graphics/pubTransitimage.jpg?raw=true');"></div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">The Transit Hüb</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="naturalLanguage">Public Sentiment</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="timeSeriesFunding">Federal Funding: Time Series</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="fundingBySource">Funding Sources by City & Agency</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="transitAccesibility">Availability</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">References & Resources</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="resources">Resources of Interest</a>
+                        <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="methods">Methods & Findings</a>
+                            <a class="dropdown-item" href="dataSources">Data Sources</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+<!-- Container -->
+    <div class = "container">
+        <div class="jumbotron">
+            <h1 class="display-3">Data Sources</h1>
+            <p class="lead"></p>
+            <hr class="my-4">
+            <p style="font-size:x-large; font-weight:600">Bus Stops</p>
+                <p>We used data from the US Department of Transportation ArcGIS Online to find the location of as many bus stops as was available. <br>
+                <br>
+                Dataset: The <a href = "https://data-usdot.opendata.arcgis.com/datasets/gtfs-ntm-stops">General Transit Feed Specification (GTFS)</a> dataset as of August 26, 2020 and is from the Federal Transit Administration (FTA), and part of U.S. Department of Transportation (USDOT)/Bureau of Transportation Statistics' (BTS') National Transportation Atlas Database (NTAD). This dataset, also known as GTFS static or static transit to differentiate it from the GTFS real-time extension, defines a common format for public transportation schedules and associated geographic information. GTFS "feeds" let public transit agencies publish their transit data and developers write applications that consume that data in an interoperable way. GTFS Data stored in the National Transit Map database's. GTFS Specification: https://developers.google.com/transit/gtfs/reference/   </p>
+                <br>
+                <br>
+
+            <p style="font-size:x-large; font-weight:600">Rail Stations</p>
+                <p>We used the Homeland Infrastructure Foundation-Level Data to find the location of as many rail stations as was available.<br>
+                <br>
+                Dataset: The <a href = "https://hifld-geoplatform.opendata.arcgis.com/datasets/public-transit-stations">Public Transit Stations</a> feature class/shapefile is composed of fixed rail transit stations within the Continental United States, Alaska, Hawaii, the District of Columbia, and Puerto Rico. The modes of transit that are serviced by these stations include cable car, commuter rail, heavy rail, inclined plane, light rail, monorail/automated guideway, and streetcar rail as defined by the Federal Transit Administration, US Department of Transportation.</p>
+                <br>
+                <br>
+            <p style="font-size:x-large; font-weight:600">Funding</p>
+                <p>We used data from the US Department of Transportation to find funding data from various sources across the US, including time-series data for the last decade and 2019 funding-source data. <br>
+                <br>
+                Dataset: The <a href = "https://www.transit.dot.gov/ntd/data-product/monthly-module-raw-data-release">Monthly Module Raw Data Release</a> contains monthly-updated service information reported by urban Full Reporters, released before adjustments.<br>
+                <br>
+                Dataset: The <a href = "https://www.transit.dot.gov/ntd/data-product/2019-time-series">2019 Time Series</a> files present NTD data by year, as far back as achievable, to allow for series and trend analyses. There were no changes to the time series in 2019 other than to add the data from Report Year 2019. As a reminder, effective with the 2017 release, the Time Series reflects data reported to the National Transit Database (NTD) by public transit operators in rural areas. To perform urban-only analysis, data users should filter the Reporting Module column of each tab to 'Urban' or filter the Primary Urbanized Area (UZA) column to '(Blanks)'.<br>
+                <br>
+                Dataset: The <a href = "https://www.transit.dot.gov/ntd/data-product/monthly-module-raw-data-release">2019 Funding Sources</a> file contains sources of revenue applied by each public transportation agency to operations and capital.
+                <br>
+                <br>
+                <br>
+            <p style="font-size:x-large; font-weight:600">Ridership</p>
+                <p>We used data from the American Public Transit Association to extract ridership data on a year over year basis for the US overall.<br>
+                <br>
+                Dataset: The <a href = "https://www.apta.com/research-technical-resources/transit-statistics/ridership-report/">Public Transportation Ridership Report</a> is a quarterly report of transit passenger ridership for U.S. and Canadian transit agencies.  The report includes quarterly and year-to-date estimated unlinked transit passenger trips for the current and previous year by transit mode.  In addition, agency specific ridership is provided for participating transit agencies.  Reports are published approximately 60-75 days after the end of the quarter.</p>
+        </div>
+    </div>
+</body>

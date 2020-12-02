@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <title>The Transit Hüb</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">   
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/sandstone/bootstrap.min.css" integrity="sha384-zEpdAL7W11eTKeoBJK1g79kgl9qjP7g84KfK3AZsuonx38n8ad+f5ZgXtoSDxPOh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+
+<!-- Container -->
+<style>      
+    .bgSizeCover {
+        background-image: url(https://github.com/spearjen/TransitData/blob/spearjay/graphics/pubTransitimage.jpg?raw=true);
+        background-size: cover;
+        height: 1500px;
+        resize: both;            
+        /* border-color: rgba(0,0,0,.125);
+        border-width: 2px;
+        border-style: solid */
+    }
+    .vl {
+        border-left: 1px solid black;
+        height: 95%;
+        margin-bottom: 25px;
+        margin-right: 25px;
+        margin-left: 25px;
+    }
+    .left {    
+        grid-area: l;
+        background-color: black;
+    }
+    .right {
+        grid-area: r;
+        background-color: #e9ecef;
+    }
+    .footer {
+        grid-area: f;
+        background-color: #black
+    }
+    .navbar {
+        grid-area: n;
+    }
+    @media (max-width: 576px) {
+        .bgSizeCover {
+            background-size: cover;
+            height: 50%;
+            width: 50%;
+            resize: both;   
+            background-image: url(https://github.com/spearjen/TransitData/blob/spearjay/graphics/pubTransitimageSm.jpg?raw=true);
+        }
+    }
+    @media (max-width: 576px) {
+        .vl {
+        border-left: 0px solid black;
+        height: 0px;
+        margin-bottom: 0px;
+        margin-right: 0px;
+        margin-left: 0px;
+        }
+    }
+
+    </style>
+
+<!-- Navbar -->
+<body style = "background-color: #e9ecef">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">The Transit Hüb</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="naturalLanguage">Public Sentiment</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="timeSeriesFunding">Federal Funding: Time Series</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="fundingBySource">Funding Sources by City & Agency</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="transitAccesibility">Availability</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">References & Resources</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="resources">Resources of Interest</a>
+                        <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="methods">Methods & Findings</a>
+                            <a class="dropdown-item" href="dataSources">Data Sources</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+<!-- Content -->
+    <div class = "container">
+        <div class="row">
+
+            <!-- Top Tableau Embed -->
+            <div class="col-sm-6">
+                <br>
+                <br>
+                <h1 class="display-3">The Transit Hüb
+                    <p class="lead">Providing reliable data for public transit decision-making</p>
+                    <hr class="my-4">
+                    <div class="bgSizeCover"></div>
+                </h1>
+            </div>
+            <div class="col-sm-1">
+                <br>
+                <br>
+                <div class="vl"></div>
+            </div>
+            <div class="col-sm-5">
+                <p><br><br>Public transit is an integral part of the landscape of an organized society. A well-developed and well-patronized public transit system provides connectivity to schooling, jobs, and other essential services. These services are especially useful for a citizenry without the financial resources to sustain the cost of ownership of a private vehicle. A robust and sustainable public transit system is also a pivotal force in combating carbon emissions as nations come to terms in the global effort in addressing climate change. 
+                    <br>
+                    <br>
+                    According to the American Public Transportation Association, Americans took 9.9 billion trips on public transit in 2019, which drives home the core importance of public transit in the US and the extent to which Americans rely on this public service.
+                    <br>
+                    <br>
+                    Public transit is also a matter that is regularly on local and state level ballots to increase or decrease funding and is one of a few government-funded services that receives lip service support on both sides of the political aisle. However, information on public transit stops, funding, and ridership is scattered at best. Various stakeholders rely on this data to further their goals. Lawmakers amend policy and funding in order to address the needs of their constituents. Advocacy groups use this data in order to amend their requests and strategy. Local businesses use transportation options in their benefits packages when attracting new talent. 
+                    <br>
+                    <br>
+                    Our tool, The Transit Hüb, offers a comprehensive, interactive picture of the public transit landscape across the United States.
+                    <br>
+                    <br>
+                    Users looking to understand the volume and sources of transit funding in different states can access the <a href = "fundingBySource">Funding Sources by City & Agency</a> map and see both at a glance and on a more granular scale where funding comes from for different cities and the volume of said funding. On the <a href="timeSeriesFunding">Federal Fuding: Time Series</a> page, users can examine a variety of visualizations regarding the changes in federal funding for bus and rail transit over the last decade.  Users may also access a machine learning linear regression model that predicts transit ridership based on urban transit funding and previous year’s as well as the previous two year’s ridership, with an error rate of less than 10%. This will prove useful to lawmakers and/or advocates looking to use all available funding in a given area and understand where funding may have been exhausted from a certain source. The machine learning model will also allow users to understand approximately how much they can expect ridership to change given changes in funding. 
+                    <br>
+                    <br>
+                    Users looking to understand the relative availablity of transit stops in different areas can access the <a href = "transitAccesibility">Availability</a> map and see the distribution of bus and rail stops across the US based on available data. This will prove especially useful to lawmakers and administrators in various public transit authorities looking to understand existing availablity of transit stops and to more accurately target new areas for expansion. Private transit companies can also utilize this map to see where business opportunities lie by looking for two main factors: where there is relatively a high population that is not being served.
+                    <br>
+                    <br>
+                    Users looking to understand public sentiment regarding public transit can access the <a href = "naturalLanguage">Public Sentiment</a> map and see at a glance whether local transit users feel positively or negatively about their transit experiences. This data will prove useful to target areas for improvement in existing transit ecosystems. Positive public sentiment is an important metric for lawmakers and administrators to understand and seek to improve, as citizens who feel more positively about their local transit systems may be more likely to pass increased taxes or other funding measures. 
+                    </p>
+            </div>
+
+
+<!-- Left side     -->
+        <!-- <div class="left">
+            <div class="container">
+                <h1 class="display-3">The Transit Hub
+                    <p class="lead">Providing reliable data for public transit decision-making</p>
+
+                </h1>
+            </div>
+        </div>
+        <div class="right">
+        </div>        
+        <div class="footer">
+        </div>
+    </div> -->
+
+
+</body>

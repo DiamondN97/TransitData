@@ -1,0 +1,42 @@
+.containerjs {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 100px);
+    grid-template-rows: repeat(2, 100px);
+    grid-template-areas:
+        "n n n n n n n n n n n n"
+        "l c1 c1 c1 c1 c1 c2 c2 c2 c2 c2 r"
+        "l f f f f f f f f f f r";
+    grid-gap: 3px;
+    background-color: #325d88;
+}
+
+.navbarjs {
+    grid-area: n;
+    background-color: #6610f2;
+}
+
+.leftjs {
+    grid-area: l;
+    background-color: #8e8c84;
+}
+
+.rightjs {
+    grid-area: r;
+    background-color: #6610f2;
+}
+
+.content1js{
+    grid-area: c1;
+    background-color: #e83e8c;
+}
+
+.content2js{
+    grid-area: c2;
+    background-color: #fff;
+}
+
+.footerjs {
+    grid-area: f;
+    background-color: #ffc107;
+}

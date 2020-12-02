@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Transit Hüb</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">   
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/sandstone/bootstrap.min.css" integrity="sha384-zEpdAL7W11eTKeoBJK1g79kgl9qjP7g84KfK3AZsuonx38n8ad+f5ZgXtoSDxPOh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.2.1.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"> </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
+    
+    <!-- <script type="text/javascript">
+        var vizList = ['https://public.tableau.com/views/FederalFundingperState-JSedit/FederalFunding?:language=en&:display_count=y&publish=yes&:origin=viz_share_link','https://public.tableau.com/views/SalesvsRidership/SalesvsRidership?:language=en&:display_count=y&:origin=viz_share_link','https://public.tableau.com/views/TotalvsRidership/TotalvsRidership?:language=en&:display_count=y&:origin=viz_share_link','https://public.tableau.com/views/RailvsRidership/RailvsRidership?:language=en&:display_count=y&:origin=viz_share_link','https://public.tableau.com/views/BusvsRidership/BusvsRidership?:language=en&:display_count=y&:origin=viz_share_link','https://public.tableau.com/views/CategorySplitFunding/FundingCategory?:language=en&:display_count=y&:origin=viz_share_link','https://public.tableau.com/views/TotalFederalFunding/Total?:language=en&:display_count=y&:origin=viz_share_link','https://public.tableau.com/views/StateofGoodRepairFunding/StateofGoodRepair?:language=en&:display_count=y&:origin=viz_share_link','https://public.tableau.com/views/BusBusFacilitiesFunding/Bus?:language=en&:display_count=y&:origin=viz_share_link'];
+        var vizDescrip = ['https://public.tableau.com/views/SalesvsRidership/SalesvsRidership?:language=en&:display_count=y&:origin=viz_share_link','https://public.tableau.com/views/TotalvsRidership/TotalvsRidership?:language=en&:display_count=y&:origin=viz_share_link','https://public.tableau.com/views/RailvsRidership/RailvsRidership?:language=en&:display_count=y&:origin=viz_share_link','https://public.tableau.com/views/BusvsRidership/BusvsRidership?:language=en&:display_count=y&:origin=viz_share_link','https://public.tableau.com/views/CategorySplitFunding/FundingCategory?:language=en&:display_count=y&:origin=viz_share_link','https://public.tableau.com/views/TotalFederalFunding/Total?:language=en&:display_count=y&:origin=viz_share_link','https://public.tableau.com/views/StateofGoodRepairFunding/StateofGoodRepair?:language=en&:display_count=y&:origin=viz_share_link','https://public.tableau.com/views/BusBusFacilitiesFunding/Bus?:language=en&:display_count=y&:origin=viz_share_link'];
+
+
+        var viz,
+            vizLen = vizList.length,
+            vizCount = 0;
+
+        function createViz(vizPlusMinus) {
+            var vizDiv = document.getElementById("vizContainer"),
+                options = {
+                    hideTabs: true
+                };
+
+            vizCount = vizCount + vizPlusMinus;
+
+            if (vizCount >= vizLen) {
+            // Keep the vizCount in the bounds of the array index.
+                vizCount = 0;
+            } else if (vizCount < 0) {
+                vizCount = vizLen - 1;
+            }
+
+            if (viz) { // If a viz object exists, delete it.
+                viz.dispose();
+            }
+
+            var vizURL = vizList[vizCount];
+            var vizPara = vizDescrip[vizCount];
+            viz = new tableau.Viz(vizDiv, vizURL, options);
+        }
+    </script> -->
+</head>
+
+<body style = "background-color: #e9ecef"></body>
+    <style>
+        .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+            position: relative;
+            width: 100%;
+            min-height: 1px;
+            padding-right: 0px;
+            padding-left: 10px;
+        }
+        .card-header {
+            font-size: 15pt;
+        }
+        /* .well {
+            font-size: 11pt;
+            font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        } */
+        #vizContainer {
+            border-color: rgba(0,0,0,.125);
+            border-width: 1px;
+            border-style: solid;
+        }
+    </style>
+    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">The Transit Hüb</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+            <a class="nav-link" href="/">Home
+                <span class="sr-only">(current)</span>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="naturalLanguage">Public Sentiment</a>
+            </li>
+            <li class="nav-item active">
+            <a class="nav-link" href="timeSeriesFunding">Federal Funding: Time Series</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="fundingBySource">Funding Sources by City & Agency</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="transitAccesibility">Availability</a>
+            </li>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">References & Resources</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="resources">Resources of Interest</a>
+                <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="methods">Methods & Findings</a>
+                    <a class="dropdown-item" href="dataSources">Data Sources</a>
+            </div>
+            </li>
+        </ul>
+        </div>
+    </nav>
+
+<!-- Container -->
+
+  <div class="container">
+    <div class="row">
+
+              <!-- Top Tableau Embed -->
+        <div class="col-sm-7">
+            <br>
+            <br>
+            <h1 class="display-3">Federal Funding</h1>
+            <p class="lead">How has federal funding for public transit changed over the last decade?</p>
+            <hr class="my-4">
+            <select id="changeViz"></select><br>
+            <!-- <body onload="createViz(0);">
+                <div id="controls" style="padding:5px;">
+                    <button style="width:100px;" onclick="javascript:createViz(-1);">Previous</button>
+                    <button style="width:100px;" onclick="javascript:createViz(1);">Next</button>
+                </div>
+                <div id="vizContainer" style="width:100%""></div>
+
+            </body> -->
+            <br>
+            <div id="vizContainer"></div>
+        </div>
+
+        <div class="col-sm-5">
+            <br>
+            <br>
+            <br>
+            <div class="card mb-3">
+                <h3 class="card-header">Ridership & Funding</h3>
+                <div class="card-body">
+                    <h7 class="card-title">This is a machine learning model.
+                    <br>
+                    <br>
+                    The orange dots on this graph show the predicted ridership over the past 20 years based on urban transit funding, the previous year’s ridership, and the ridership from two years ago. The blue dots show actual ridership, demonstrating the relatively high accuracy of this model and its potential to predict future ridership based on these features.</h7>
+                    <div class="card-body">
+                        <img src="https://github.com/spearjen/TransitData/blob/spearjay/graphics/mlmodel.png?raw=true" style = "width: 100%; height: 100%; border-color: rgba(0,0,0,.125); border-width: 1px; border-style: solid;">
+                    </div>
+                </div>
+            </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="../static/js/app3.js"></script>
+  
+</body>
+
+</html>

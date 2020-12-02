@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Transit Hüb</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">   
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/sandstone/bootstrap.min.css" integrity="sha384-zEpdAL7W11eTKeoBJK1g79kgl9qjP7g84KfK3AZsuonx38n8ad+f5ZgXtoSDxPOh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+
+<body style = "background-color: #e9ecef">
+
+  <style>
+    .col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto {
+      position: relative;
+      width: 100%;
+      min-height: 1px;
+      padding-right: 0px;
+      padding-left: 10px;
+    }
+    .tableauPlaceholder{
+      border-color: rgba(0,0,0,.125);
+      border-width: 1px;
+      border-style: solid;
+      min-height: 65%;
+      min-width:100%;
+    }
+    .card-header {
+      font-size: 15pt;
+    }
+  </style>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">The Transit Hüb</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="naturalLanguage">Public Sentiment</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="timeSeriesFunding">Federal Funding: Time Series</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="fundingBySource">Funding Sources by City & Agency</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="transitAccesibility">Availability</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">References & Resources</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="resources">Resources of Interest</a>
+            <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="methods">Methods & Findings</a>
+                <a class="dropdown-item" href="dataSources">Data Sources</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+<!-- Container -->
+  <div class = "container">
+    <div class ="row">
+
+      <!-- Top Tableau Embed -->
+      <div class="col-sm-7">
+        <br>
+        <br>
+        <h1 class="display-3">Public Sentiment</h1>
+        <p class="lead">Tweets may give insight into how people feel about public transit</p>
+        <hr class="my-4">
+        <p>Click on a dot to see the polarity and subjectivity rating for each state’s tweets about public transit. A polarity score closer to +1 means the state was tweeting more positively, where a score closer to -1 means more negative tweets, and a score closer to 0 is neutral. A subjectivity score closer to 0 indicates objective tweets, where a score closer to +1 indicates subjective tweets.</p>
+        <br>
+        <div class='tableauPlaceholder' id='viz1605979174951' style='position: relative'>
+          <noscript>
+            <a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Po&#47;PolarityvsSubjectivityofState-LevelPublicTransitRelatedTweets&#47;Dashboard2&#47;1_rss.png' style='border: none' /></
+          </noscript>
+          <object class='tableauViz'  style='display:none;'>
+            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+            <param name='embed_code_version' value='3' /> 
+            <param name='site_root' value='' />
+            <param name='name' value='PolarityvsSubjectivityofState-LevelPublicTransitRelatedTweets&#47;Dashboard2' />
+            <param name='tabs' value='no' />
+            <param name='toolbar' value='yes' />
+            <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Po&#47;PolarityvsSubjectivityofState-LevelPublicTransitRelatedTweets&#47;Dashboard2&#47;1.png' /> 
+            <param name='animate_transition' value='yes' />
+            <param name='display_static_image' value='yes' />
+            <param name='display_spinner' value='yes' />
+            <param name='display_overlay' value='yes' />
+            <param name='display_count' value='yes' />
+            <param name='language' value='en' /><param name='filter' value='publish=yes' />
+          </object>    
+          <script type='text/javascript'>                    
+            var divElement = document.getElementById('viz1605979174951');                    
+            var vizElement = divElement.getElementsByTagName('object')[0];                    
+              if ( divElement.offsetWidth > 800 ) { vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';vizElement.style.minHeight='587px';vizElement.style.maxHeight='887px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} 
+              else if ( divElement.offsetWidth > 500 ) { vizElement.style.minWidth='420px';vizElement.style.maxWidth='650px';vizElement.style.width='100%';vizElement.style.minHeight='587px';vizElement.style.maxHeight='887px';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} 
+              else { vizElement.style.width='100%';vizElement.style.height='727px';}                     
+            var scriptElement = document.createElement('script');                    
+            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+          </script>
+        </div>
+    </div>
+      
+      <!--Tableau Card Embed -->
+      <div class="col-sm-5">
+        <br>
+        <br>
+        <br>
+        <div class="card mb-3">
+          <h3 class="card-header">Polarity & Subjectivity</h3>
+          <div class="card-body">
+            <h7 class="card-title">Hover over the circles on this graph to see the overall polarity and subjectivity associated with general US tweets about public transit.</h7>
+          </div>
+          <div class="card-body">
+            <div class='tableauPlaceholder' id='viz1606793573661' style='position: relative'>
+              <noscript>
+                <a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;US&#47;USTweetSentiment-PubTransit-JS&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a>
+              </noscript>
+              <object class='tableauViz'  style='display:none;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+                <param name='embed_code_version' value='3' /> 
+                <param name='site_root' value='' />
+                <param name='name' value='USTweetSentiment-PubTransit-JS&#47;Dashboard1' />
+                <param name='tabs' value='no' /><param name='toolbar' value='yes' />
+                <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;US&#47;USTweetSentiment-PubTransit-JS&#47;Dashboard1&#47;1.png' /> 
+                <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' />
+                <param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' />
+                <param name='language' value='en' />
+                <param name='filter' value='publish=yes' />
+              </object>
+            </div>                
+            <script type='text/javascript'>                    
+              var divElement = document.getElementById('viz1606793573661');                    
+              var vizElement = divElement.getElementsByTagName('object')[0];                    
+                if ( divElement.offsetWidth > 800 ) { vizElement.style.width='400px';vizElement.style.height='327px';} 
+                else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='400px';vizElement.style.height='327px';} 
+                else { vizElement.style.width='100%';vizElement.style.height='400px';}                     
+              var scriptElement = document.createElement('script');                    
+              scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+              vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+            </script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
